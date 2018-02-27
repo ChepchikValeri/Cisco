@@ -10,9 +10,9 @@ int main()
 	{
 		v[i] = i * 2;
 	}
-	for (unsigned i = 0; i < v.size(); ++i)//simplify
+	for (int vv : v)//simplify
 	{
-		cout << v[i] << " ";
+		cout << vv << " ";
 	}
 	cout << endl;
 
