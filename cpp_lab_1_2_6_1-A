@@ -1,0 +1,24 @@
+#include "stdafx.h"
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	vector <string> ip_table{ "127.0.0.1", "192.168.0.1", "192.168.1.100", "255.255.255.255" };
+	vector <string> copy(ip_table);
+	int temp;
+	cin >> temp;
+	if (temp > 4)
+		cout << "Too big - value must be smaller than or equal to vector size.";
+	else if (temp < 0)
+		cout << "Too small - value must be bigger than 0";
+	else
+		for (unsigned i = 0; i < temp; i++)
+			cout << copy[i] << " ";
+	cout << endl;
+	system("pause");
+	return 0;
+}
