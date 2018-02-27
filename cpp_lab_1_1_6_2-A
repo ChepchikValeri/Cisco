@@ -1,0 +1,19 @@
+#include "stdafx.h"
+#include <vector>
+#include <iostream>
+
+using namespace std;
+int main()
+{
+	
+	float temp;
+	cout << "Enter the number!" << endl;
+	cin >> temp;
+	vector <float> v{temp,temp+5,temp+0.5f,temp+2.3f,temp+4.7f};
+	temp = 0;
+	for (unsigned i = 0; i < v.size(); i++)
+		temp += v[i];
+	cout << "sum: " << temp << "avg: " << temp / v.size();
+	system("pause");
+	return 0;
+}
