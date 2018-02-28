@@ -1,0 +1,84 @@
+#include "stdafx.h"
+#include <iostream>
+#include <deque>
+
+using namespace std;
+
+enum CommandType
+{
+	MoveLeft,
+	MoveRight,
+	MoveForward,
+	MoveBackward
+};
+
+class RoboCommander
+{
+public:
+	void AddCommand(CommandType type)
+	{
+		switch (type)
+		{
+			case 0: d.push_back(type);
+				break;
+			case 1: d.push_back(type);
+				break;
+			case 2: d.push_back(type);
+				break;
+			case 3: d.push_back(type);
+				break;
+		}
+	}
+	void UndoCommand()
+	{
+			if(!d.empty())
+			d.pop_back();
+	}
+	
+	void Execute()
+	{
+		for (auto i : d)
+			cout << i << endl;
+		for (auto i : d) {
+			switch (i)
+			{
+			case 0: cout << "Moving Left!" << endl;
+				break;
+			case 1: cout << "Moving Right!" << endl;
+				break;
+			case 2: cout << "Moving Forward!" << endl;
+				break;
+			case 3: cout << "Moving Backward!" << endl;
+				break;
+			}
+		}
+		cout << "Ready" << endl;
+	}
+private:
+	CommandType command;
+	deque <int> d;
+};
+int main()
+{
+	RoboCommander commander;
+	commander.AddCommand(MoveLeft);
+	commander.AddCommand(MoveRight);
+	commander.UndoCommand();
+	commander.UndoCommand();
+	commander.UndoCommand();
+	commander.AddCommand(MoveLeft);
+	commander.AddCommand(MoveForward);
+	commander.AddCommand(MoveLeft);
+	commander.AddCommand(MoveForward);
+	commander.AddCommand(MoveRight);
+	commander.AddCommand(MoveBackward);
+	commander.Execute();
+	commander.UndoCommand();
+	commander.UndoCommand();
+	commander.UndoCommand();
+	commander.UndoCommand();
+	commander.AddCommand(MoveForward);
+	commander.Execute();
+	system("pause");
+	return 0;
+}
