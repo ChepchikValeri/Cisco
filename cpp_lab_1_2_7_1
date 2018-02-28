@@ -1,0 +1,134 @@
+#include "stdafx.h"
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <sstream>
+using namespace std;
+
+/*bool Withdraw(int sum, Banknote v)
+{
+	bool output = false;
+	int temp_amount;
+	int temp_nominal;
+	for ()
+	{
+		temp_amount = i.Amount;
+		temp_nominal = i.Nominal;
+		for (unsigned j = 0; j < temp_amount; j++)
+		{
+			if (sum - temp_nominal == 0)
+			{
+				output = true;
+				return output;
+			}
+			else if (sum - temp_nominal > 0)
+			{
+				sum - temp_nominal;
+				j++;
+			}
+		}
+	}
+	return output;
+}*/
+
+class Banknote
+{
+public:
+	Banknote(int _nominal, int _amount) : nominal(_nominal), amount(_amount) { }
+	__declspec(property(get = get_Amount)) int Amount;
+	int get_Amount()
+	{
+		return amount;     // Или более сложная логика
+	}
+	__declspec(property(get = get_Nominal)) int Nominal;
+	int get_Nominal()
+	{
+		return nominal;     // Или более сложная логика
+	}
+private:
+	
+	int nominal;
+	int amount;
+};
+
+class ATM
+{
+public:
+	vector <Banknote> get_Vector()
+	{
+		return v;
+	}	
+	void set_Vector(vector <Banknote> _v)
+	{
+		v = _v;
+	}
+
+	string Withdraw(int sum)
+	{
+		bool output = false;
+		int temp_amount;
+		int temp_nominal;
+		if (sum % 10 > 0 || sum < 0)
+		{
+			return "Incorrect amount of money";
+		}
+		for (Banknote i : v)
+			{
+				temp_amount = i.Amount;
+				temp_nominal = i.Nominal;
+				//cout << i.Nominal << " : " << i.Amount << endl;
+				for (unsigned j = 0; j < temp_amount; j++)
+					{
+					//cout << "Вход в цикл количества купюр" << endl;
+						if (sum - temp_nominal == 0)
+							{
+								return "Enough money.";
+							}
+						else if (sum - temp_nominal > 0)
+						{
+							//cout << "sum = " << sum << endl;
+							//cout << "temp amount = " << temp_amount << endl;
+							//cout << "temp_nominal" << temp_nominal << endl;
+							//cout << "sum - temp_nominal" << endl;
+							//cout << "temp amount = " << temp_amount << endl;
+							//cout << "temp_nominal" << temp_nominal << endl;
+								sum -= temp_nominal;
+								temp_amount--;
+							}
+					}
+			}
+	return "Not enough money";
+	}
+
+
+private:
+	_declspec(property(get = get_Vector,put = set_Vector)) vector <Banknote> Vector;
+	vector <Banknote> v;
+};
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	ATM atm;
+	//vector <Banknote> v {Banknote(200,5), Banknote(100, 4), Banknote(50, 3), Banknote(20, 6), Banknote(10, 5)};
+	atm.set_Vector(vector <Banknote> { Banknote(200,5), Banknote(100, 4), Banknote(50, 3), Banknote(20, 6), Banknote(10, 5) });
+	string line;
+	char input[20];
+	cin.getline(input,20);
+	line = input;
+	string arr[2];
+	int i = 0;
+	int arrmoney[2];
+	stringstream ssin(line);
+	while (ssin.good() && i < 2) {
+		ssin >> arr[i];
+		++i;
+	}
+	for (i = 0; i < 2; i++) {
+		arrmoney[i] = stoi(arr[i]);
+		cout << atm.Withdraw(arrmoney[i]) << endl;
+	}
+	system("pause");
+	return 0;
+}
