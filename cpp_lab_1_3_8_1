@@ -1,0 +1,38 @@
+#include "stdafx.h"
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+	vector<int> v1;
+	vector<int> v2;
+	int max_value;
+	cout << " enter the value" << endl;
+	cin >> max_value;
+	if (max_value % 2)
+		max_value++;
+	for (unsigned i = 1; i <= max_value; i++)
+		if (i % 2)
+			v1.push_back(i);
+		else
+			v2.push_back(i);
+	for (int i : v1)
+	{
+		for (int j : v2)
+		{
+			cout << i + j << " ";
+		}
+	}
+	for (auto i = v1.rbegin() ; i != v1.rend(); i++)
+	{
+		for (auto j = v2.rbegin(); j != v2.rend(); j++)
+		{
+			cout << *i + *j << " ";
+		}
+	}
+
+	system("pause");
+	return 0;
+}
