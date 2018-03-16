@@ -1,0 +1,37 @@
+#include"stdafx.h"
+#include <iostream>
+#include <set>
+#include "Cisco.h"
+#include <fstream>
+#include <set>
+#include <functional>
+
+using namespace std;
+
+void func(multiset <double> mset, double start, double stop)
+{
+	double sum = 0;
+	if (mset.count(start) <=0 && mset.count(stop) <=0)
+		cout << "Not found!  ";
+	else
+	{
+		for (auto i = mset.lower_bound(start); i != mset.upper_bound(stop); i++)
+			sum += *i;
+		cout << "sum = " << sum << endl;
+	}
+}
+
+int main()
+{
+	multiset <double> valuesA = { 1.1, 2.3, 2.7, 2.9, 3.5 };
+	multiset <double> valuesB = { 2.5, 2.7, 3.14, 3.5, 3.5, 4.5 };
+	double start_value, stop_value;
+	cin >> start_value;
+	cin >> stop_value;
+	func(valuesA, start_value, stop_value);
+	func(valuesB, start_value, stop_value);
+	//your code
+
+	system("pause");
+	return 0;
+}
