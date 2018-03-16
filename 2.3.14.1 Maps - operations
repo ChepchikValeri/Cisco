@@ -1,0 +1,37 @@
+#include"stdafx.h"
+#include <iostream>
+#include <set>
+#include "Cisco.h"
+#include <fstream>
+#include <set>
+#include <map>
+#include <vector>
+#include <functional>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+
+int main()
+{
+	map<string, int> results = { { "Sarah", 15 },{ "John", 12 },{ "Bart", 17 } };
+	for (auto i : results)
+	{
+		cout << i.first << " result is : " << i.second << endl;
+	}
+	results.erase("Bart");
+	cout << endl << endl;
+	for (auto i : results)
+	{
+		cout << i.first << " result is : " << i.second << endl;
+	}
+	results.insert(std::pair<string,int>("Bob",16));
+	cout << endl << endl;
+	for (auto i : results)
+	{
+		cout << i.first << " result is : " << i.second << endl;
+	}
+	system("pause");
+	return 0;
+}
