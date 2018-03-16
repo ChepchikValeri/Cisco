@@ -1,0 +1,36 @@
+#include"stdafx.h"
+#include <iostream>
+#include <set>
+#include "Cisco.h"
+#include <fstream>
+#include <set>
+#include <functional>
+
+using namespace std;
+
+void func(set <double, greater<double>> valuesA, double input)
+{
+	if (valuesA.count(input) <=0)
+		cout << "Not found!  ";
+	else
+	{
+		//cout << "poshla jara" << endl;
+		set<double, greater<double>>::iterator it = valuesA.find(input);
+		for (; it != valuesA.end(); ++it)
+			cout << *it << " ";
+	}
+}
+
+int main()
+{
+	set <double, greater<double>> valuesA = { -1.1, 2.9, -2.3, 2.71 };
+	set <double, greater<double>> valuesB = { -3.14, 2.71, -3.88, 2.19 };
+	double value;
+	cin >> value;
+	func(valuesA,value);
+	func(valuesB,value);
+	//your code
+
+	system("pause");
+	return 0;
+}
