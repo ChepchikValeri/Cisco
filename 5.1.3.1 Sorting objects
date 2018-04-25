@@ -1,0 +1,43 @@
+#include "stdafx.h"
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+#include <math.h>
+
+using namespace std;
+
+
+
+//your code 
+class Point
+{
+public: int first_key, second_key;
+		Point(int first_key, int second_key) :first_key(first_key), second_key(second_key) {};
+
+};
+bool ascending_sum(const Point & a, const Point & b)
+{
+	return (sqrt(pow(a.first_key, 2) + pow(a.second_key, 2))) < (sqrt(pow(b.first_key, 2) + pow(b.second_key, 2)));
+}
+void print(const Point & p)
+{
+	cout << p.first_key << ',' << p.second_key<< endl;
+}
+int main()
+{
+	vector <Point> points = { { 1, 2 },{ 3, 5 },{ 2, 2 } };
+	cout << points.size() << endl;
+
+	cout << "points: "<< endl;
+	for_each(points.begin(), points.end(), print);
+	cout << endl;
+	sort(points.begin(), points.end(), ascending_sum);
+	//your code 
+	cout << "points*: " << endl;
+	for_each(points.begin(), points.end(), print);
+	cout << endl;
+
+	system("pause");
+	return 0;
+}
