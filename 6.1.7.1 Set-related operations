@@ -1,0 +1,58 @@
+#include "stdafx.h"
+#include <deque>
+#include <string>
+#include <iostream>
+#include <functional>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+template <class T> void print(T start, T end) {
+	for (; start != end; ++start) {
+		std::cout << *start << " ";
+	}
+}
+
+int compare(int a, int b)
+{
+	return b < a;
+}
+
+
+struct Country
+{
+	string name;
+	int area;
+	bool operator < (Country c) { return (this->area < c.area); }
+};
+
+//your code
+
+int main()
+{
+
+	vector<Country> countries = {
+		{ "India", 3287 },{ "Argentina", 2780 },
+	{ "Brazil", 8515 },{ "Australia", 7692 },
+	{ "China", 9572 },{ "United States of America", 9525 },
+	{ "Russia", 17098 },{ "Canada", 9984 },
+	{ "Kazakhstan", 	2724 },{ "Algeria", 2381 }
+	};
+	vector <Country> countries_small = {
+		{ "Brazil", 8515 },{ "Australia", 7692 },
+	{ "Kazakhstan", 	2724 },{ "Algeria", 2381 }
+	};
+	sort(countries.begin(), countries.end());
+	sort(countries_small.begin(), countries_small.end());
+	Country temp = ((Country)*(min_element(countries.begin(), countries.end())));
+	cout << temp.name << "  " << temp.area;
+	temp = ((Country)*(min_element(countries_small.begin(), countries_small.end())));
+	cout << temp.name << "  " << temp.area;
+	temp = ((Country)*(max_element(countries.begin(), countries.end())));
+	cout << temp.name << "  " << temp.area;
+	temp = ((Country)*(max_element(countries_small.begin(), countries_small.end())));
+	cout << temp.name << "  " << temp.area;
+	system("pause");
+	return 0;
+}
