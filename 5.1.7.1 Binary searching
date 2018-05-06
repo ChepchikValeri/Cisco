@@ -1,0 +1,39 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+struct Country 
+{
+	string name;
+	int area;
+	Country() {}
+	Country(string x, int y) : name{ x }, area{y} {}
+	Country(int area) : area(area) {}
+	bool operator<(const Country &o) const 
+	{
+		cout << "area = " << area << " o.area = " << o.area << endl;
+		return this->area == o.area; }
+};
+
+
+//your code
+
+int main()
+{
+	vector <Country> countries = {
+		{ "India", 3287 },{ "Argentina", 2780 },
+	{ "Brazil", 8515 },{ "Australia", 7692 },
+	{ "China", 9572 },{ "United States of America", 9525 },
+	{ "Russia", 17098 },{ "Canada", 9984 },
+	{ "Kazakhstan", 	2724 },{ "Algeria", 2381 }
+	};
+	//your code
+	bool has_3 = std::binary_search(countries.begin(), countries.end(), Country(2870));
+	cout << has_3<<endl;
+	system("pause");
+	return 0;
+}
