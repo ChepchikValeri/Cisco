@@ -1,0 +1,26 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+
+int main()
+{
+
+	vector<int> vec = {1,2,3,3,4,5,6,6,7};
+	pair<vector<int>::iterator, vector<int>::iterator> p = equal_range(vec.begin(), vec.end(), 3);
+	pair<vector<int>::iterator, vector<int>::iterator> p1 = equal_range(vec.begin(), vec.end(), 6);
+	pair<vector<int>::iterator, vector<int>::iterator> p2 = {p.first,p1.second};
+	for (vector<int>::iterator i = p2.first; i != p2.second; i++)
+	{
+		cout << *i << endl;
+	}
+	//your code
+
+
+	system("pause");
+	return 0;
+}
