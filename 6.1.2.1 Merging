@@ -1,0 +1,40 @@
+#include "stdafx.h"
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+#include <math.h>
+
+using namespace std;
+
+class Point 
+{
+	
+public :
+	
+	int a;
+	int b;
+	Point(int a, int b) : a{ a }, b{ b } {};
+	Point() {};
+	bool operator < (const Point &p) const
+	{
+		return (sqrt(double(a)*double(a) + double(b) * double(b)) < sqrt(double(p.a)*double(p.a) + double(p.b)*double(p.b)));
+	}
+
+};
+
+//{
+//	cout << this->a << "  " << this->b << endl;
+//}
+int main()
+{
+	vector <Point> pointsA = { { 1, 2 },{ 3, 5 },{ 2, 2 } };
+	vector <Point> pointsB = { { 3, 2 },{ 2, 1 },{ 4, 1 } };
+	vector <Point> pointsClosest(pointsA.size()+pointsB.size());
+	sort(pointsA.begin(), pointsA.end());
+	sort(pointsB.begin(), pointsB.end());
+	merge(pointsA.begin(),pointsA.end(),pointsB.begin(),pointsB.end(),pointsClosest.begin());
+	for_each(pointsClosest.begin(), pointsClosest.end(), [](Point &p) {	cout << p.a << " " << p.b << endl; });
+	system("pause");
+	return 0;
+}
